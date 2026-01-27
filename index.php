@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <a href="./prj-001/" class="project-btn project-btn-primary">
                                     <span>Live Demo</span>
                                 </a>
-                                <a href="https://github.com/jayramani" class="project-btn project-btn-secondary" target="_blank">
+                                <a href="https://github.com/jayramanidev/Portfolio/tree/main/prj-001" class="project-btn project-btn-secondary" target="_blank">
                                     <span>Source Code</span>
                                 </a>
                             </div>
@@ -206,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <a href="./prj-002/" class="project-btn project-btn-primary">
                                     <span>Live Demo</span>
                                 </a>
-                                <a href="https://github.com/jayramani" class="project-btn project-btn-secondary" target="_blank">
+                                <a href="https://github.com/jayramanidev/Portfolio/tree/main/prj-002" class="project-btn project-btn-secondary" target="_blank">
                                     <span>Source Code</span>
                                 </a>
                             </div>
@@ -234,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <a href="./prj-003/" class="project-btn project-btn-primary">
                                     <span>Live Demo</span>
                                 </a>
-                                <a href="https://github.com/jayramani" class="project-btn project-btn-secondary" target="_blank">
+                                <a href="https://github.com/jayramanidev/Portfolio/tree/main/prj-003" class="project-btn project-btn-secondary" target="_blank">
                                     <span>Source Code</span>
                                 </a>
                             </div>
