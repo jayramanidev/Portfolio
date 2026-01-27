@@ -1,0 +1,75 @@
+Role: You are an expert creative front-end developer and a PHP specialist.
+
+Goal: Create a single-page, responsive portfolio website for a BCA Semester 4 student.
+
+The Vibe ("Antigravity Coder"): The site must feel like the user is floating through deep space. It should not feel like scrolling down a flat page, but rather moving forward through different layers of depth. It needs to be dark, futuristic, glowing, and weightless.
+
+Crucial Technical Constraints:
+
+NO EXTERNAL LIBRARIES. Do not use GSAP, Three.js, jQuery, or Bootstrap.
+
+Must use pure, semantic HTML5.
+
+Must use modern CSS3 (Flexbox/Grid, CSS Variables, Keyframe animations, and crucially, CSS 3D Transforms for depth).
+
+Must use Vanilla JavaScript (ES6+) for interactivity and scroll handling.
+
+Must use PHP solely for handling a simple contact form submission.
+
+Core Concept: Vanilla JS Deep Space Parallax Instead of standard 2D parallax where elements just move up at different speeds, I want a 3D optical parallax effect.
+
+Implementation Strategy: The main container should have a CSS perspective set. Different sections (layers) of the site should be placed along the Z-axis using transform: translateZ().
+
+As the user scrolls, JavaScript should update a CSS variable (e.g., --scroll-y) on the root element.
+
+The CSS layers should use calc() based on that variable to move along the Z-axis towards the viewer, creating a genuine feeling of depth and movement through space.
+
+Required Sections & Details:
+
+1. General Styling & Assets
+
+Background: A deep space background (very dark blue/black gradient) with subtle stars.
+
+Colors: Neon cyan, electric purple, and bright green accents against dark backgrounds. Use CSS box-shadow to create glowing neon borders around elements.
+
+Fonts: Use a free Google Font that looks technical and futuristic (e.g., 'Orbitron', 'Rajdhani', or 'Space Mono').
+
+Antigravity idle state: Every major element (project cards, skill icons, headers) must have a slow, subtle, infinite CSS keyframe bobbing animation (moving up and down slightly) so nothing ever looks truly static.
+
+2. Section 1: The Hero Layer (Furthest Back Z-index)
+
+A large headline: "Hi, I'm [Your Name]."
+
+Sub-headline: "BCA Sem 4 | The Antigravity Coder."
+
+A prominent "Enter Space" button that smooth-scrolls down.
+
+3. Section 2: About & Skills Layer (Mid-ground Z-index)
+
+A short "About Me" text block on a semi-transparent, frosted-glass style card (using backdrop-filter: blur).
+
+Skills Area: Instead of progress bars, display skill names (HTML, CSS, JS, PHP, MySQL, Java) inside glowing geometric shapes (hexagons or circles) that float slowly around their container area.
+
+4. Section 3: Projects Layer (Closer Z-index)
+
+Section Title: "Mission Logs (Projects)."
+
+Display 2-3 sample project cards.
+
+The cards should look like futuristic data tablets. When hovered, they should glow brighter and lift slightly closer to the screen (using translateZ and shadow).
+
+5. Section 4: Contact Layer (Closest Z-index)
+
+A simple contact form floating in space.
+
+Fields: Name, Email, Message.
+
+PHP Integration: The form must submit to a PHP script on the same page. The PHP script should sanitize the inputs. For this demo, if successful, just display a glowing "Message Transmitted into the Void" success message above the form without actually sending an email (to keep the code runnable locally without SMTP server config).
+
+Output Required: Please provide the complete code broken down into three clearly separated files:
+
+index.php (Containing the HTML structure and the PHP form handling logic at the top).
+
+style.css (Containing all styling, keyframe animations, and 3D transform setups).
+
+script.js (Containing the vanilla JS scroll event listener to drive the parallax).

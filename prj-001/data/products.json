@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Nebula Navigator Pro",
+        "description": "Advanced space navigation headset with holographic display and neural link capabilities.",
+        "price": 299.99,
+        "category": "navigation",
+        "image": "🚀",
+        "stock": 15
+    },
+    {
+        "id": 2,
+        "name": "Quantum Core Processor",
+        "description": "Ultra-fast quantum computing chip for interstellar calculations and AI processing.",
+        "price": 599.99,
+        "category": "hardware",
+        "image": "⚡",
+        "stock": 8
+    },
+    {
+        "id": 3,
+        "name": "Zero-G Gaming Chair",
+        "description": "Ergonomic floating chair with magnetic suspension for ultimate comfort in any gravity.",
+        "price": 449.99,
+        "category": "furniture",
+        "image": "🪑",
+        "stock": 12
+    },
+    {
+        "id": 4,
+        "name": "Plasma Shield Generator",
+        "description": "Personal force field device for protection against cosmic radiation and debris.",
+        "price": 799.99,
+        "category": "protection",
+        "image": "🛡️",
+        "stock": 5
+    },
+    {
+        "id": 5,
+        "name": "Stellar Sound Pods",
+        "description": "Wireless earbuds with noise cancellation optimized for vacuum and atmosphere.",
+        "price": 149.99,
+        "category": "audio",
+        "image": "🎧",
+        "stock": 25
+    },
+    {
+        "id": 6,
+        "name": "Holographic Display Kit",
+        "description": "Create stunning 3D projections anywhere with this portable hologram generator.",
+        "price": 349.99,
+        "category": "display",
+        "image": "📱",
+        "stock": 18
+    }
+]
