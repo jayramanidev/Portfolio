@@ -177,6 +177,18 @@ body {
     transform-style: preserve-3d;
     transition: transform 0.1s linear;
     will-change: transform;
+    pointer-events: none;
+    /* Fix: Prevent layers from blocking clicks */
+}
+
+.section-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    pointer-events: auto;
+    /* Fix: Re-enable clicks on content */
+    position: relative;
+    z-index: 10;
 }
 
 /* ===============================================
@@ -289,6 +301,7 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
+    pointer-events: auto;
 }
 
 .hero-title {
@@ -466,6 +479,7 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    pointer-events: auto;
 }
 
 .section-title {
@@ -609,9 +623,8 @@ body {
     border-radius: 15px;
     padding: 2rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     transition: var(--transition-smooth);
-    transform-style: preserve-3d;
 }
 
 .card-screen::before {
@@ -636,7 +649,6 @@ body {
 }
 
 .project-card:hover .card-screen {
-    transform: translateZ(30px) rotateX(2deg);
     border-color: var(--neon-cyan);
     box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.5),
@@ -710,10 +722,16 @@ body {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    position: relative;
+    z-index: 20;
+    transform-style: flat;
 }
 
 .project-btn {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.75rem 1rem;
     font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.75rem;
@@ -725,6 +743,9 @@ body {
     border-radius: 8px;
     transition: var(--transition-smooth);
     cursor: pointer;
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
 }
 
 .project-btn-primary {

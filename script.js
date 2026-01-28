@@ -4,7 +4,7 @@
  * No external libraries used
  */
 
-(function() {
+(function () {
     'use strict';
 
     // DOM Elements
@@ -42,7 +42,7 @@
      */
     function animateOnLoad() {
         document.body.style.opacity = '0';
-        
+
         requestAnimationFrame(() => {
             document.body.style.transition = 'opacity 0.5s ease-in-out';
             document.body.style.opacity = '1';
@@ -96,15 +96,15 @@
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const relativeScroll = scrollY - sectionTop + windowHeight;
-            
+
             // Calculate z-translation based on scroll position
             const zOffset = (index + 1) * 50; // Base z-offset per layer
             const scrollFactor = (relativeScroll / windowHeight) * config.parallaxIntensity;
             const translateZ = Math.min(Math.max(scrollFactor * zOffset, -100), 100);
-            
+
             // Apply subtle rotation based on layer depth
             const rotateX = (scrollFactor - 0.5) * 2;
-            
+
             section.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg)`;
         });
     }
@@ -162,7 +162,7 @@
      */
     function smoothScrollTo(targetId) {
         const target = document.getElementById(targetId);
-        
+
         if (!target) return;
 
         const targetPosition = target.offsetTop;
@@ -175,10 +175,10 @@
             if (startTime === null) startTime = currentTime;
             const timeElapsed = currentTime - startTime;
             const progress = Math.min(timeElapsed / duration, 1);
-            
+
             // Easing function - easeInOutCubic
-            const ease = progress < 0.5 
-                ? 4 * progress * progress * progress 
+            const ease = progress < 0.5
+                ? 4 * progress * progress * progress
                 : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 
             window.scrollTo(0, startPosition + (distance * ease));
@@ -222,7 +222,7 @@
     function updateActiveNav(sectionId) {
         navDots.forEach(dot => {
             const dotSection = dot.getAttribute('data-section');
-            
+
             if (dotSection === sectionId) {
                 dot.classList.add('active');
             } else {
@@ -258,7 +258,7 @@
      */
     function throttle(func, limit) {
         let inThrottle;
-        return function(...args) {
+        return function (...args) {
             if (!inThrottle) {
                 func.apply(this, args);
                 inThrottle = true;
@@ -308,20 +308,24 @@
 
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
+                // Skip effect if hovering over buttons
+                if (e.target.closest('.project-btn') || e.target.closest('.project-actions')) {
+                    return;
+                }
+
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
+
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
+
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
 
                 const cardScreen = card.querySelector('.card-screen');
                 if (cardScreen) {
                     cardScreen.style.transform = `
-                        translateZ(30px) 
                         rotateX(${rotateX}deg) 
                         rotateY(${rotateY}deg)
                     `;
@@ -331,7 +335,7 @@
             card.addEventListener('mouseleave', () => {
                 const cardScreen = card.querySelector('.card-screen');
                 if (cardScreen) {
-                    cardScreen.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
+                    cardScreen.style.transform = 'rotateX(0) rotateY(0)';
                 }
             });
         });
@@ -340,32 +344,11 @@
     /**
      * Initialize cursor glow effect (optional enhancement)
      */
+    /**
+     * Initialize cursor glow effect (optional enhancement) - REMOVED
+     */
     function setupCursorGlow() {
-        const cursorGlow = document.createElement('div');
-        cursorGlow.className = 'cursor-glow';
-        cursorGlow.style.cssText = `
-            position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
-            opacity: 0;
-        `;
-        document.body.appendChild(cursorGlow);
-
-        document.addEventListener('mousemove', throttle((e) => {
-            cursorGlow.style.left = `${e.clientX}px`;
-            cursorGlow.style.top = `${e.clientY}px`;
-            cursorGlow.style.opacity = '1';
-        }, 16));
-
-        document.addEventListener('mouseleave', () => {
-            cursorGlow.style.opacity = '0';
-        });
+        // Feature removed as per user request
     }
 
     /**
@@ -373,11 +356,11 @@
      */
     function setupFormValidation() {
         const form = document.querySelector('.contact-form');
-        
+
         if (!form) return;
 
         const inputs = form.querySelectorAll('.form-input');
-        
+
         inputs.forEach(input => {
             input.addEventListener('blur', () => {
                 validateInput(input);
@@ -392,7 +375,7 @@
 
         form.addEventListener('submit', (e) => {
             let isValid = true;
-            
+
             inputs.forEach(input => {
                 if (!validateInput(input)) {
                     isValid = false;
