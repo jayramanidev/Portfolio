@@ -4,123 +4,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Weather Dashboard - Real-time cosmic weather data">
-    <title>Cosmic Weather | Dashboard</title>
+    <meta name="description" content="Weather Dashboard - Beautiful weather forecasts">
+    <title>Weather | Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="starfield">
-        <div class="stars stars-small"></div>
-        <div class="stars stars-medium"></div>
-    </div>
+<body class="weather-clear">
+    <!-- Dynamic Background -->
+    <div class="weather-bg"></div>
 
-    <header class="app-header">
-        <a href="../" class="back-link">← Back to Portfolio</a>
-        <h1 class="app-title">
-            <span class="title-glow">Cosmic</span> Weather
-        </h1>
-        <div class="header-actions">
-            <button class="location-btn" id="locationBtn" title="Get my location">📍</button>
-        </div>
-    </header>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <a href="../" class="back-btn" title="Back to Portfolio">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </a>
 
-    <main class="app-main">
+            <!-- Temperature Unit Toggle -->
+            <button class="unit-toggle" id="unitToggle" title="Switch temperature unit">
+                <span class="unit-option active" data-unit="C">°C</span>
+                <span class="unit-divider">|</span>
+                <span class="unit-option" data-unit="F">°F</span>
+            </button>
+
+            <button class="location-btn" id="locationBtn" title="Use my location">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                </svg>
+            </button>
+        </header>
+
         <!-- Search -->
-        <section class="search-section glass-card floating">
+        <section class="search-section">
             <form id="searchForm" class="search-form">
-                <input type="text" id="cityInput" class="search-input" placeholder="Search city or coordinates...">
-                <button type="submit" class="search-btn">
-                    <span>🔍</span>
-                </button>
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                    <input type="text" id="cityInput" class="search-input" placeholder="Search city..."
+                        autocomplete="off">
+                </div>
             </form>
         </section>
 
         <!-- Loading State -->
         <div class="loading-state" id="loadingState">
             <div class="loader"></div>
-            <p>Scanning atmosphere...</p>
+            <p>Loading weather...</p>
         </div>
 
         <!-- Error State -->
-        <div class="error-state glass-card" id="errorState">
-            <span class="error-icon">⚠️</span>
+        <div class="error-state" id="errorState">
+            <span class="error-icon">☁️</span>
+            <h3>Oops!</h3>
             <p id="errorMessage">Unable to fetch weather data</p>
-            <button class="retry-btn" id="retryBtn">Retry</button>
+            <button class="retry-btn" id="retryBtn">Try Again</button>
         </div>
 
         <!-- Weather Dashboard -->
         <div class="dashboard" id="dashboard">
-            <!-- Current Weather -->
-            <section class="current-weather glass-card floating">
-                <div class="weather-main">
-                    <div class="weather-icon" id="weatherIcon">☀️</div>
-                    <div class="weather-temp">
-                        <span class="temp-value" id="tempValue">--</span>
-                        <span class="temp-unit">°C</span>
+            <!-- Left Column: Hero + Stats -->
+            <div class="dashboard-left" id="dashboardLeft">
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator" id="scrollIndicator">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                    </svg>
+                </div>
+                <!-- Hero Weather Card -->
+                <section class="hero-card">
+                    <div class="hero-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        <span id="locationName">Loading...</span>
                     </div>
-                </div>
-                <div class="weather-info">
-                    <h2 class="location-name" id="locationName">--</h2>
-                    <p class="weather-desc" id="weatherDesc">--</p>
-                    <p class="weather-time" id="weatherTime">--</p>
-                </div>
-            </section>
 
-            <!-- Weather Details -->
-            <section class="weather-details glass-card">
-                <div class="detail-item">
-                    <span class="detail-icon">💨</span>
-                    <div class="detail-info">
-                        <span class="detail-label">Wind Speed</span>
-                        <span class="detail-value" id="windSpeed">-- km/h</span>
+                    <div class="hero-weather">
+                        <div class="weather-icon-wrapper">
+                            <span class="weather-icon" id="weatherIcon">☀️</span>
+                        </div>
+                        <div class="hero-temp">
+                            <span class="temp-value" id="tempValue">--</span>
+                            <span class="temp-unit">°</span>
+                        </div>
                     </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">💧</span>
-                    <div class="detail-info">
-                        <span class="detail-label">Humidity</span>
-                        <span class="detail-value" id="humidity">--%</span>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">🌡️</span>
-                    <div class="detail-info">
-                        <span class="detail-label">Feels Like</span>
-                        <span class="detail-value" id="feelsLike">--°C</span>
-                    </div>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">☁️</span>
-                    <div class="detail-info">
-                        <span class="detail-label">Cloud Cover</span>
-                        <span class="detail-value" id="cloudCover">--%</span>
-                    </div>
-                </div>
-            </section>
 
-            <!-- 7-Day Forecast -->
-            <section class="forecast-section glass-card">
-                <h3 class="section-title">7-Day Forecast</h3>
-                <div class="forecast-grid" id="forecastGrid">
-                    <!-- Forecast cards generated by JS -->
-                </div>
-            </section>
+                    <p class="weather-condition" id="weatherDesc">--</p>
 
-            <!-- Hourly Chart -->
-            <section class="chart-section glass-card">
-                <h3 class="section-title">24-Hour Temperature</h3>
-                <div class="chart-container">
-                    <canvas id="tempChart"></canvas>
-                </div>
-            </section>
+                    <div class="temp-range">
+                        <span class="temp-high">H: <span id="tempHigh">--</span>°</span>
+                        <span class="temp-low">L: <span id="tempLow">--</span>°</span>
+                    </div>
+                </section>
+
+                <!-- Weather Stats -->
+                <section class="stats-card">
+                    <div class="stat-item">
+                        <span class="stat-icon">💨</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="windSpeed">--</span>
+                            <span class="stat-label">Wind</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💧</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="humidity">--</span>
+                            <span class="stat-label">Humidity</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🌡️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="feelsLike">--</span>
+                            <span class="stat-label">Feels Like</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">☀️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="uvIndex">--</span>
+                            <span class="stat-label">UV Index</span>
+                        </div>
+                    </div>
+                    <div class="stat-item aqi-stat">
+                        <span class="stat-icon">🌬️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="aqiValue">--</span>
+                            <span class="stat-label">AQI</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">👁️</span>
+                        <div class="stat-info">
+                            <span class="stat-value" id="visibility">--</span>
+                            <span class="stat-label">Visibility</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Forecasts -->
+            <div class="dashboard-right">
+                <!-- Hourly Forecast -->
+                <section class="hourly-card">
+                    <h3 class="card-title">Hourly Forecast</h3>
+                    <div class="hourly-scroll" id="hourlyScroll">
+                        <!-- Generated by JS -->
+                    </div>
+                </section>
+
+                <!-- 7-Day Forecast -->
+                <section class="forecast-card">
+                    <h3 class="card-title">7-Day Forecast</h3>
+                    <div class="forecast-list" id="forecastList">
+                        <!-- Generated by JS -->
+                    </div>
+                </section>
+            </div>
         </div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
