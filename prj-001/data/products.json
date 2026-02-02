@@ -1,56 +1,122 @@
 [
     {
         "id": 1,
-        "name": "Nebula Navigator Pro",
-        "description": "Advanced space navigation headset with holographic display and neural link capabilities.",
-        "price": 299.99,
-        "category": "navigation",
-        "image": "🚀",
-        "stock": 15
+        "name": "VOID BOMBER",
+        "description": "Reflective details / Oversized fit",
+        "price": 23999,
+        "category": "OUTERWEAR",
+        "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop",
+        "stock": 10,
+        "badge": "NEW"
     },
     {
         "id": 2,
-        "name": "Quantum Core Processor",
-        "description": "Ultra-fast quantum computing chip for interstellar calculations and AI processing.",
-        "price": 599.99,
-        "category": "hardware",
-        "image": "⚡",
-        "stock": 8
+        "name": "PHANTOM WINDBREAKER",
+        "description": "Water-resistant / Packable",
+        "price": 14499,
+        "category": "OUTERWEAR",
+        "image": "https://images.unsplash.com/photo-1544923246-77307dd628b5?w=400&h=500&fit=crop",
+        "stock": 5,
+        "badge": "LIMITED"
     },
     {
         "id": 3,
-        "name": "Zero-G Gaming Chair",
-        "description": "Ergonomic floating chair with magnetic suspension for ultimate comfort in any gravity.",
-        "price": 449.99,
-        "category": "furniture",
-        "image": "🪑",
-        "stock": 12
+        "name": "SPECTRUM TEE",
+        "description": "Gradient print / 100% Cotton",
+        "price": 6999,
+        "category": "TOPS",
+        "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop",
+        "stock": 20,
+        "badge": ""
     },
     {
         "id": 4,
-        "name": "Plasma Shield Generator",
-        "description": "Personal force field device for protection against cosmic radiation and debris.",
-        "price": 799.99,
-        "category": "protection",
-        "image": "🛡️",
-        "stock": 5
+        "name": "SHADOW HOODIE",
+        "description": "Heavyweight / Kangaroo pocket",
+        "price": 11999,
+        "category": "TOPS",
+        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop",
+        "stock": 15,
+        "badge": "BESTSELLER"
     },
     {
         "id": 5,
-        "name": "Stellar Sound Pods",
-        "description": "Wireless earbuds with noise cancellation optimized for vacuum and atmosphere.",
-        "price": 149.99,
-        "category": "audio",
-        "image": "🎧",
-        "stock": 25
+        "name": "ECHO LONGSLEEVE",
+        "description": "Reflective print / Relaxed fit",
+        "price": 7899,
+        "category": "TOPS",
+        "image": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop",
+        "stock": 18,
+        "badge": ""
     },
     {
         "id": 6,
-        "name": "Holographic Display Kit",
-        "description": "Create stunning 3D projections anywhere with this portable hologram generator.",
-        "price": 349.99,
-        "category": "display",
-        "image": "📱",
-        "stock": 18
+        "name": "GLITCH TANK",
+        "description": "Distressed / Drop armhole",
+        "price": 4499,
+        "category": "TOPS",
+        "image": "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=500&fit=crop",
+        "stock": 25,
+        "badge": ""
+    },
+    {
+        "id": 7,
+        "name": "PRISM CARGOS",
+        "description": "Multi-pocket / Tapered leg",
+        "price": 13699,
+        "category": "BOTTOMS",
+        "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=500&fit=crop",
+        "stock": 8,
+        "badge": "LIMITED"
+    },
+    {
+        "id": 8,
+        "name": "FLUX SWEATS",
+        "description": "Wide leg / Side stripe",
+        "price": 10399,
+        "category": "BOTTOMS",
+        "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=500&fit=crop",
+        "stock": 12,
+        "badge": "NEW"
+    },
+    {
+        "id": 9,
+        "name": "RELIC DENIM",
+        "description": "Distressed / Relaxed fit",
+        "price": 15349,
+        "category": "BOTTOMS",
+        "image": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=500&fit=crop",
+        "stock": 10,
+        "badge": ""
+    },
+    {
+        "id": 10,
+        "name": "PULSE SHORTS",
+        "description": "Mesh lining / Drawstring",
+        "price": 6199,
+        "category": "BOTTOMS",
+        "image": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=500&fit=crop",
+        "stock": 22,
+        "badge": ""
+    },
+    {
+        "id": 11,
+        "name": "FRACTAL CAP",
+        "description": "Embroidered / Adjustable",
+        "price": 4499,
+        "category": "ACCESSORIES",
+        "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=500&fit=crop",
+        "stock": 30,
+        "badge": ""
+    },
+    {
+        "id": 12,
+        "name": "VOID BEANIE",
+        "description": "Ribbed knit / Cuffed",
+        "price": 3699,
+        "category": "ACCESSORIES",
+        "image": "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&h=500&fit=crop",
+        "stock": 0,
+        "badge": "SOLD OUT"
     }
 ]

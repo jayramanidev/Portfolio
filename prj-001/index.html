@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PRISM - Premium Streetwear E-Commerce. Exclusive drops. Limited editions. Elevated style.">
+    <title>PRISM | Streetwear Collective</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="prism-bg"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <a href="../" class="nav-back">
+            <span class="back-arrow">←</span>
+            <span class="back-text">PORTFOLIO</span>
+        </a>
+        <a href="#" class="logo">
+            <span class="logo-text">PRISM</span>
+            <span class="logo-sub">COLLECTIVE</span>
+        </a>
+        <button class="cart-btn glass" id="cartBtn">
+            <span class="cart-icon">⬡</span>
+            <span class="cart-label">CART</span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-tagline mono">// DROPPING SOON — FW26 COLLECTION</p>
+            <h1 class="hero-headline">
+                <span class="line">BREAK THE</span>
+                <span class="line accent">SPECTRUM</span>
+            </h1>
+            <p class="hero-description mono">
+                LIMITED EDITION STREETWEAR FOR THOSE WHO REFUSE TO BLEND IN.
+                HANDCRAFTED. EXCLUSIVE. UNAPOLOGETIC.
+            </p>
+            <a href="#products" class="cta-btn glass">
+                <span class="cta-text">EXPLORE COLLECTION</span>
+                <span class="cta-arrow">→</span>
+            </a>
+        </div>
+        <div class="hero-visual">
+            <div class="prism-shape"></div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <main class="products-section" id="products">
+        <!-- OUTERWEAR -->
+        <section class="category-section">
+            <div class="section-header">
+                <span class="section-tag mono">// OUTERWEAR</span>
+                <h2 class="section-title">JACKETS & LAYERS</h2>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1: Void Bomber -->
+                <article class="product-card glass" data-product-id="1">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop"
+                            alt="Void Bomber Jacket" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">BOMBER JACKET</span>
+                        <h3 class="product-name">VOID BOMBER</h3>
+                        <p class="product-desc mono">REFLECTIVE DETAILS / OVERSIZED FIT</p>
+                        <div class="product-footer">
+                            <span class="product-price">$289</span>
+                            <button class="add-btn" data-id="1" data-name="VOID BOMBER" data-price="289">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 2: Phantom Windbreaker -->
+                <article class="product-card glass" data-product-id="2">
+                    <div class="product-badge">LIMITED</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544923246-77307dd628b5?w=400&h=500&fit=crop"
+                            alt="Phantom Windbreaker" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">WINDBREAKER</span>
+                        <h3 class="product-name">PHANTOM WINDBREAKER</h3>
+                        <p class="product-desc mono">WATER-RESISTANT / PACKABLE</p>
+                        <div class="product-footer">
+                            <span class="product-price">$175</span>
+                            <button class="add-btn" data-id="2" data-name="PHANTOM WINDBREAKER" data-price="175">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- TOPS -->
+        <section class="category-section">
+            <div class="section-header">
+                <span class="section-tag mono">// TOPS</span>
+                <h2 class="section-title">SHIRTS & HOODIES</h2>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 3: Spectrum Tee -->
+                <article class="product-card glass" data-product-id="3">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop"
+                            alt="Spectrum Tee" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">GRAPHIC TEE</span>
+                        <h3 class="product-name">SPECTRUM TEE</h3>
+                        <p class="product-desc mono">GRADIENT PRINT / 100% COTTON</p>
+                        <div class="product-footer">
+                            <span class="product-price">$85</span>
+                            <button class="add-btn" data-id="3" data-name="SPECTRUM TEE" data-price="85">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 4: Shadow Hoodie -->
+                <article class="product-card glass" data-product-id="4">
+                    <div class="product-badge">BESTSELLER</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop"
+                            alt="Shadow Hoodie" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">HOODIE</span>
+                        <h3 class="product-name">SHADOW HOODIE</h3>
+                        <p class="product-desc mono">HEAVYWEIGHT / KANGAROO POCKET</p>
+                        <div class="product-footer">
+                            <span class="product-price">$145</span>
+                            <button class="add-btn" data-id="4" data-name="SHADOW HOODIE" data-price="145">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 5: Echo Longsleeve -->
+                <article class="product-card glass" data-product-id="5">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=500&fit=crop"
+                            alt="Echo Longsleeve" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">LONG SLEEVE</span>
+                        <h3 class="product-name">ECHO LONGSLEEVE</h3>
+                        <p class="product-desc mono">REFLECTIVE PRINT / RELAXED FIT</p>
+                        <div class="product-footer">
+                            <span class="product-price">$95</span>
+                            <button class="add-btn" data-id="5" data-name="ECHO LONGSLEEVE" data-price="95">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 6: Glitch Tank -->
+                <article class="product-card glass" data-product-id="6">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=500&fit=crop"
+                            alt="Glitch Tank" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">TANK TOP</span>
+                        <h3 class="product-name">GLITCH TANK</h3>
+                        <p class="product-desc mono">DISTRESSED / DROP ARMHOLE</p>
+                        <div class="product-footer">
+                            <span class="product-price">$55</span>
+                            <button class="add-btn" data-id="6" data-name="GLITCH TANK" data-price="55">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- BOTTOMS -->
+        <section class="category-section">
+            <div class="section-header">
+                <span class="section-tag mono">// BOTTOMS</span>
+                <h2 class="section-title">PANTS & SWEATS</h2>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 7: Prism Cargos -->
+                <article class="product-card glass" data-product-id="7">
+                    <div class="product-badge">LIMITED</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=500&fit=crop"
+                            alt="Prism Cargos" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">CARGO PANTS</span>
+                        <h3 class="product-name">PRISM CARGOS</h3>
+                        <p class="product-desc mono">MULTI-POCKET / TAPERED LEG</p>
+                        <div class="product-footer">
+                            <span class="product-price">$165</span>
+                            <button class="add-btn" data-id="7" data-name="PRISM CARGOS" data-price="165">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 8: Flux Sweats -->
+                <article class="product-card glass" data-product-id="8">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=500&fit=crop"
+                            alt="Flux Sweats" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">SWEATPANTS</span>
+                        <h3 class="product-name">FLUX SWEATS</h3>
+                        <p class="product-desc mono">WIDE LEG / SIDE STRIPE</p>
+                        <div class="product-footer">
+                            <span class="product-price">$125</span>
+                            <button class="add-btn" data-id="8" data-name="FLUX SWEATS" data-price="125">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 9: Relic Denim -->
+                <article class="product-card glass" data-product-id="9">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=500&fit=crop"
+                            alt="Relic Denim" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">DENIM</span>
+                        <h3 class="product-name">RELIC DENIM</h3>
+                        <p class="product-desc mono">DISTRESSED / RELAXED FIT</p>
+                        <div class="product-footer">
+                            <span class="product-price">$185</span>
+                            <button class="add-btn" data-id="9" data-name="RELIC DENIM" data-price="185">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 10: Jogger Shorts -->
+                <article class="product-card glass" data-product-id="10">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=500&fit=crop"
+                            alt="Pulse Shorts" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">SHORTS</span>
+                        <h3 class="product-name">PULSE SHORTS</h3>
+                        <p class="product-desc mono">MESH LINING / DRAWSTRING</p>
+                        <div class="product-footer">
+                            <span class="product-price">$75</span>
+                            <button class="add-btn" data-id="10" data-name="PULSE SHORTS" data-price="75">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ACCESSORIES -->
+        <section class="category-section">
+            <div class="section-header">
+                <span class="section-tag mono">// ACCESSORIES</span>
+                <h2 class="section-title">CAPS & MORE</h2>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 11: Fractal Cap -->
+                <article class="product-card glass" data-product-id="11">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=500&fit=crop"
+                            alt="Fractal Cap" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">CAP</span>
+                        <h3 class="product-name">FRACTAL CAP</h3>
+                        <p class="product-desc mono">EMBROIDERED / ADJUSTABLE</p>
+                        <div class="product-footer">
+                            <span class="product-price">$55</span>
+                            <button class="add-btn" data-id="11" data-name="FRACTAL CAP" data-price="55">
+                                <span class="add-text">ADD</span>
+                                <span class="add-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+
+                <!-- Product 12: Void Beanie -->
+                <article class="product-card glass" data-product-id="12">
+                    <div class="product-badge">SOLD OUT</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&h=500&fit=crop"
+                            alt="Void Beanie" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category mono">BEANIE</span>
+                        <h3 class="product-name">VOID BEANIE</h3>
+                        <p class="product-desc mono">RIBBED KNIT / CUFFED</p>
+                        <div class="product-footer">
+                            <span class="product-price">$45</span>
+                            <button class="add-btn disabled" data-id="12" data-name="VOID BEANIE" data-price="45"
+                                disabled>
+                                <span class="add-text">SOLD OUT</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar glass" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">YOUR CART</h2>
+            <button class="cart-close" id="cartClose">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty mono">// CART IS EMPTY</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="total-label">TOTAL</span>
+                <span class="total-amount" id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn">CHECKOUT</button>
+        </div>
+    </aside>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span class="notification-icon">✓</span>
+        <span class="notification-text" id="notificationText">Added to cart</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
