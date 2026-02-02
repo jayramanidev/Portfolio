@@ -3,7 +3,7 @@
  * All features: Cart, Particles, Filters, Quick View, Wishlist, Newsletter
  */
 
-// DOM Elements
+// DOM Elements - with null safety
 const cartBtn = document.getElementById('cartBtn');
 const cartSidebar = document.getElementById('cartSidebar');
 const cartOverlay = document.getElementById('cartOverlay');
@@ -18,8 +18,8 @@ const filterBar = document.getElementById('filterBar');
 const quickViewModal = document.getElementById('quickViewModal');
 const newsletterOverlay = document.getElementById('newsletterOverlay');
 
-// Local cart state
-let localCart = [];
+// Local cart state - persisted in localStorage
+let localCart = JSON.parse(localStorage.getItem('prism_cart') || '[]');
 let currentProduct = null;
 
 // Initialize
@@ -34,8 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
     initWishlist();
     initSizeSelector();
     initNewsletter();
+    loadCartFromStorage();
     console.log('🔮 PRISM Streetwear - All features initialized');
 });
+
+/**
+ * ========== CART PERSISTENCE ==========
+ */
+function saveCartToStorage() {
+    localStorage.setItem('prism_cart', JSON.stringify(localCart));
+}
+
+function loadCartFromStorage() {
+    localCart = JSON.parse(localStorage.getItem('prism_cart') || '[]');
+    if (localCart.length > 0 && cartCountEl) {
+        const totalItems = localCart.reduce((sum, item) => sum + item.quantity, 0);
+        updateCartUI(totalItems);
+    }
+}
 
 /**
  * ========== FLOATING PARTICLES ==========
@@ -89,12 +105,17 @@ async function addToCart(productId, productName, productPrice) {
             localCart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
         }
 
+        // Save to localStorage
+        saveCartToStorage();
+
         updateCartUI(result.cartCount);
         showNotification(`${productName} added to cart`);
 
         // Bounce animation on cart
-        cartCountEl.classList.add('bounce');
-        setTimeout(() => cartCountEl.classList.remove('bounce'), 500);
+        if (cartCountEl) {
+            cartCountEl.classList.add('bounce');
+            setTimeout(() => cartCountEl.classList.remove('bounce'), 500);
+        }
 
         console.log('🛒 Cart updated:', localCart);
     }
@@ -123,7 +144,9 @@ async function cartAction(action, productId, quantity = null) {
 }
 
 function updateCartUI(count) {
-    cartCountEl.textContent = count;
+    if (cartCountEl) cartCountEl.textContent = count;
+
+    if (!cartItems || !cartTotal) return;
 
     if (localCart.length === 0) {
         cartItems.innerHTML = '<p class="cart-empty mono">// CART IS EMPTY</p>';
@@ -147,12 +170,19 @@ async function removeFromCart(productId) {
     const result = await cartAction('remove', productId);
     if (result.success) {
         localCart = localCart.filter(item => item.id != productId);
+        saveCartToStorage();
         updateCartUI(result.cartCount);
         showNotification('Item removed');
     }
 }
 
 function initCartToggle() {
+    // Null checks for all elements
+    if (!cartBtn || !cartSidebar || !cartOverlay || !cartClose) {
+        console.log('Cart elements not found, skipping cart toggle init');
+        return;
+    }
+
     cartBtn.addEventListener('click', () => {
         cartSidebar.classList.add('open');
         cartOverlay.classList.add('open');
@@ -176,6 +206,8 @@ function initCartToggle() {
  * ========== BACK TO TOP ==========
  */
 function initBackToTop() {
+    if (!backToTop) return;
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
             backToTop.classList.add('visible');
@@ -246,28 +278,31 @@ function initQuickView() {
     const modalAddBtn = document.getElementById('modalAddBtn');
     const modalSizes = document.getElementById('modalSizes');
 
+    // Null checks
+    if (!modalClose || !modalImage || !modalName || !modalAddBtn) return;
+
     // Open modal on quick view click
     document.addEventListener('click', (e) => {
         const quickViewOverlay = e.target.closest('.quick-view-overlay');
         if (!quickViewOverlay) return;
 
         const productImage = quickViewOverlay.closest('.product-image');
+        if (!productImage || !productImage.dataset.product) return;
+
         const productData = JSON.parse(productImage.dataset.product);
 
         currentProduct = productData;
 
         modalImage.src = productData.image;
         modalImage.alt = productData.name;
-        modalCategory.textContent = productData.category;
+        if (modalCategory) modalCategory.textContent = productData.category;
         modalName.textContent = productData.name;
-        modalDesc.textContent = productData.description.toUpperCase();
-        modalPrice.textContent = '₹' + productData.price.toLocaleString('en-IN');
+        if (modalDesc) modalDesc.textContent = productData.description.toUpperCase();
+        if (modalPrice) modalPrice.textContent = '₹' + productData.price.toLocaleString('en-IN');
 
         // Hide sizes for accessories
-        if (productData.category === 'ACCESSORIES') {
-            modalSizes.style.display = 'none';
-        } else {
-            modalSizes.style.display = 'block';
+        if (modalSizes) {
+            modalSizes.style.display = productData.category === 'ACCESSORIES' ? 'none' : 'block';
         }
 
         // Update add button data
@@ -342,6 +377,8 @@ function initSizeSelector() {
         if (!sizeBtn) return;
 
         const container = sizeBtn.closest('.size-options');
+        if (!container) return;
+
         container.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
         sizeBtn.classList.add('active');
     });
@@ -357,6 +394,8 @@ function initNewsletter() {
     const skipBtn = document.getElementById('newsletterSkip');
     const form = document.getElementById('newsletterForm');
 
+    if (!closeBtn || !form) return;
+
     // Show after 5 seconds (only once per session)
     if (!sessionStorage.getItem('newsletterShown')) {
         setTimeout(() => {
@@ -370,15 +409,35 @@ function initNewsletter() {
     };
 
     closeBtn.addEventListener('click', closeNewsletter);
-    skipBtn.addEventListener('click', closeNewsletter);
+    if (skipBtn) skipBtn.addEventListener('click', closeNewsletter);
     newsletterOverlay.addEventListener('click', (e) => {
         if (e.target === newsletterOverlay) closeNewsletter();
     });
 
-    form.addEventListener('submit', (e) => {
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        const emailInput = form.querySelector('.newsletter-input');
+        const email = emailInput ? emailInput.value : '';
+
+        if (!email) {
+            showNotification('Please enter your email', 'error');
+            return;
+        }
+
+        // Store email locally (for demo - in production, send to backend)
+        const subscribers = JSON.parse(localStorage.getItem('prism_subscribers') || '[]');
+        subscribers.push({ email, date: new Date().toISOString() });
+        localStorage.setItem('prism_subscribers', JSON.stringify(subscribers));
+
+        console.log('📧 Newsletter subscriber:', email);
+
         showNotification('Thanks! Check your email for 10% off');
         closeNewsletter();
+
+        // Clear the form
+        if (emailInput) emailInput.value = '';
     });
 }
 
@@ -386,6 +445,8 @@ function initNewsletter() {
  * ========== UTILITIES ==========
  */
 function showNotification(message, type = 'success') {
+    if (!notification || !notificationText) return;
+
     notificationText.textContent = message;
     notification.style.borderColor = type === 'error' ? '#ff4444' : '';
     notification.classList.add('show');
@@ -396,7 +457,10 @@ function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') return;
+
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
