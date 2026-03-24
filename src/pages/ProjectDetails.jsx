@@ -211,7 +211,7 @@ function CaseStackBreakdown({ project }) {
             <div className="case-stack-grid">
                 {frontend.length > 0 && (
                     <motion.div className="case-stack-col" variants={fadeUp}>
-                        <h4 className="case-stack-col-title">Frontend</h4>
+                        <h3 className="case-stack-col-title">Frontend</h3>
                         <div className="case-stack-chips">
                             {frontend.map((t) => (
                                 <span key={t} className="case-stack-chip">{t}</span>
@@ -221,7 +221,7 @@ function CaseStackBreakdown({ project }) {
                 )}
                 {backend.length > 0 && (
                     <motion.div className="case-stack-col" variants={fadeUp}>
-                        <h4 className="case-stack-col-title">Backend & Services</h4>
+                        <h3 className="case-stack-col-title">Backend & Services</h3>
                         <div className="case-stack-chips">
                             {backend.map((t) => (
                                 <span key={t} className="case-stack-chip">{t}</span>
@@ -261,7 +261,7 @@ function CaseArchitecture({ project }) {
                     },
                 ]).map((d, i) => (
                     <motion.div key={i} className="case-decision-card" variants={fadeUp}>
-                        <h4 className="case-decision-q">{d.question}</h4>
+                        <h3 className="case-decision-q">{d.question}</h3>
                         <p className="case-decision-a">{d.answer}</p>
                     </motion.div>
                 ))}
@@ -299,7 +299,7 @@ function CaseChallenges({ project }) {
             <div className="case-challenges-list">
                 {challenges.map((c, i) => (
                     <motion.div key={i} className="case-challenge-item" variants={fadeUp}>
-                        <h4 className="case-challenge-title">{c.title}</h4>
+                        <h3 className="case-challenge-title">{c.title}</h3>
                         <p className="case-challenge-desc">{c.desc}</p>
                     </motion.div>
                 ))}
@@ -401,7 +401,7 @@ function ProjectDetails() {
     }
 
     return (
-        <div className="case-study">
+        <article className="case-study">
             <CaseHero project={project} />
             <CaseImage project={project} />
             <CaseOverview project={project} />
@@ -412,7 +412,7 @@ function ProjectDetails() {
             <CaseArchitecture project={project} />
             <CaseChallenges project={project} />
             <CaseScreenshots project={project} />
-        </div>
+        </article>
     )
 }
 
