@@ -1,9 +1,52 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion as Motion } from 'framer-motion'
 
 function Contact() {
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+    const [status, setStatus] = useState({ submitting: false, success: false, error: null })
+
+    const handleChange = (e) => {
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setStatus({ submitting: true, success: false, error: null })
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: import.meta.env.VITE_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE',
+                    ...formData,
+                    subject: 'New Contact Form Submission from Portfolio',
+                    from_name: 'Jay Ramani Portfolio'
+                })
+            })
+
+            const json = await response.json()
+
+            if (response.status === 200) {
+                setStatus({ submitting: false, success: true, error: null })
+                setFormData({ name: '', email: '', message: '' })
+                setTimeout(() => {
+                    setStatus(prev => ({ ...prev, success: false }))
+                }, 5000)
+            } else {
+                setStatus({ submitting: false, success: false, error: json.message || 'Something went wrong.' })
+            }
+        } catch (error) {
+            console.error(error)
+            setStatus({ submitting: false, success: false, error: 'Failed to send message. Please try again later.' })
+        }
+    }
     return (
         <section className="contact-section section-divider" id="contact">
-            <motion.div
+            <Motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
@@ -14,9 +57,9 @@ function Contact() {
                 <p className="section-subtitle">
                     Have a project in mind? I'm open to freelance work and collaborations.
                 </p>
-            </motion.div>
+            </Motion.div>
 
-            <motion.div
+            <Motion.div
                 className="contact-grid"
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -62,33 +105,49 @@ function Contact() {
                     </a>
                 </div>
 
-                <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+                <form className="contact-form" onSubmit={handleSubmit}>
                     <input
                         type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="contact-input"
                         placeholder="Your name"
                         aria-label="Your name"
+                        required
                     />
                     <input
                         type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="contact-input"
                         placeholder="Your email"
                         aria-label="Your email"
+                        required
                     />
                     <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
                         className="contact-textarea"
                         placeholder="Tell me about your project..."
                         aria-label="Your message"
+                        required
                     />
-                    <button type="submit" className="btn-primary contact-submit">
-                        Send Message
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13" />
-                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                        </svg>
+                    <button type="submit" className="btn-primary contact-submit" disabled={status.submitting}>
+                        {status.submitting ? 'Sending...' : (status.success ? 'Message Sent!' : 'Send Message')}
+                        {!status.submitting && !status.success && (
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
+                        )}
                     </button>
+                    {status.error && <p className="contact-error" style={{ color: '#ef4444', marginTop: '1rem', fontSize: '0.9rem' }}>{status.error}</p>}
+                    {status.success && <p className="contact-success" style={{ color: '#10b981', marginTop: '1rem', fontSize: '0.9rem' }}>Thank you! I'll get back to you soon.</p>}
                 </form>
-            </motion.div>
+            </Motion.div>
         </section>
     )
 }
