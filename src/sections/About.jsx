@@ -27,8 +27,9 @@ function About() {
                 <div className="about-accent-line" />
 
                 <p className="about-text">
-                    I'm <strong>Jay Ramani</strong>, a Bachelor of Computer Applications student
-                    at Harivandana College, Rajkot.
+                    I'm <strong>Jay Ramani</strong>, a full-stack web developer based in Rajkot, Gujarat.
+                    I'm currently advancing my technical foundation through a Bachelor of Computer Applications
+                    at Harivandana College.
                 </p>
 
                 <p className="about-text">
