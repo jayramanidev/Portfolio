@@ -8,4 +8,20 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'motion-vendor': ['framer-motion'],
+          'firebase-vendor': [
+            'firebase/app',
+            'firebase/firestore',
+            'firebase/auth',
+          ],
+        },
+      },
+    },
+  },
 })
+

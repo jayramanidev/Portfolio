@@ -12,17 +12,17 @@ function Hero() {
             <div className="hero-grid">
                 <div className="hero-content">
                     <motion.div
+                        className="hero-badge-row"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                        style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}
                     >
                         <div className="hero-available-badge">
                             <span className="hero-available-dot"></span>
                             Available for work
                         </div>
-                        <div className="hero-location" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <div className="hero-location-badge">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                                 <circle cx="12" cy="10" r="3" />
                             </svg>

@@ -671,6 +671,20 @@ body {
   }
 }
 
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-badge-row {
+    margin-bottom: 2rem;
+  }
+}
+
 .hero-available-badge {
   display: inline-flex;
   align-items: center;
@@ -685,14 +699,35 @@ body {
   text-transform: uppercase;
   color: var(--color-primary-light);
   width: fit-content;
-  margin-bottom: 1.5rem;
 }
 
 @media (min-width: 1024px) {
   .hero-available-badge {
     font-size: 0.7rem;
     padding: 0.5rem 1.2rem;
-    margin-bottom: 2rem;
+  }
+}
+
+.hero-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  width: fit-content;
+}
+
+@media (min-width: 1024px) {
+  .hero-location-badge {
+    font-size: 0.7rem;
+    padding: 0.5rem 1.2rem;
   }
 }
 
